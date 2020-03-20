@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: resource-access-service
+  version: v0
+servers:
+- url: /
+tags:
+- name: Akse
+  description: APIs pou tcheke resous ou gen akse ak yo
+paths:
+  /api/resource/access/{dataType}/{userId}:
+    get:
+      tags:
+      - Akse
+      summary: Gets resource user has access to
+      description: Returns list of ids of DataType user has access to
+      operationId: get_resource_access_for_user
+      parameters:
+      - name: dataType
+        in: path
+        description: The data type ex book.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - book
+          - room
+      - name: userId
+        in: path
+        description: The user id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          $ref: '#/components/schemas/ResourceAccess'
+        "404":
+          description: User id does not exists
+        "422":
+          description: DataType does not exists
+        "500":
+          description: Something failed in the server
+      x-openapi-router-controller: swagger_server.controllers.akse_controller
+    post:
+      tags:
+      - Akse
+      summary: Gives user access to a resource
+      description: Adds a resource id to user access list
+      operationId: add_resource_access_for_user
+      parameters:
+      - name: dataType
+        in: path
+        description: The data type ex book.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - book
+          - room
+      - name: userId
+        in: path
+        description: The user id
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: The resource id.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceRef'
+        required: true
+      responses:
+        "200":
+          description: Success
+        "404":
+          description: User id or resource id does not exists
+        "422":
+          description: DataType does not exists
+        "500":
+          description: Something failed in the server
+      x-openapi-router-controller: swagger_server.controllers.akse_controller
+components:
+  schemas:
+    ResourceAccess:
+      type: array
+      items:
+        type: string
+    ResourceRef:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+
