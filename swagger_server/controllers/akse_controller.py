@@ -1,6 +1,7 @@
 import connexion
 import six
 
+from swagger_server.models.resource_access import ResourceAccess  # noqa: E501
 from swagger_server.models.resource_ref import ResourceRef  # noqa: E501
 from swagger_server import util
 
@@ -34,6 +35,6 @@ def get_resource_access_for_user(data_type, user_id):  # noqa: E501
     :param user_id: The user id
     :type user_id: str
 
-    :rtype: None
+    :rtype: ResourceAccess
     """
     return 'do some magic!'

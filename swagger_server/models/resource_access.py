@@ -14,15 +14,25 @@ class ResourceAccess(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self):  # noqa: E501
+    def __init__(self, count: int=None, data: List[str]=None):  # noqa: E501
         """ResourceAccess - a model defined in Swagger
 
+        :param count: The count of this ResourceAccess.  # noqa: E501
+        :type count: int
+        :param data: The data of this ResourceAccess.  # noqa: E501
+        :type data: List[str]
         """
         self.swagger_types = {
+            'count': int,
+            'data': List[str]
         }
 
         self.attribute_map = {
+            'count': 'count',
+            'data': 'data'
         }
+        self._count = count
+        self._data = data
 
     @classmethod
     def from_dict(cls, dikt) -> 'ResourceAccess':
@@ -34,3 +44,45 @@ class ResourceAccess(Model):
         :rtype: ResourceAccess
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def count(self) -> int:
+        """Gets the count of this ResourceAccess.
+
+
+        :return: The count of this ResourceAccess.
+        :rtype: int
+        """
+        return self._count
+
+    @count.setter
+    def count(self, count: int):
+        """Sets the count of this ResourceAccess.
+
+
+        :param count: The count of this ResourceAccess.
+        :type count: int
+        """
+
+        self._count = count
+
+    @property
+    def data(self) -> List[str]:
+        """Gets the data of this ResourceAccess.
+
+
+        :return: The data of this ResourceAccess.
+        :rtype: List[str]
+        """
+        return self._data
+
+    @data.setter
+    def data(self, data: List[str]):
+        """Sets the data of this ResourceAccess.
+
+
+        :param data: The data of this ResourceAccess.
+        :type data: List[str]
+        """
+
+        self._data = data

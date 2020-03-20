@@ -37,7 +37,11 @@ paths:
           type: string
       responses:
         "200":
-          $ref: '#/components/schemas/ResourceAccess'
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAccess'
         "404":
           description: User id does not exists
         "422":
@@ -91,9 +95,20 @@ paths:
 components:
   schemas:
     ResourceAccess:
-      type: array
-      items:
-        type: string
+      type: object
+      properties:
+        count:
+          type: integer
+        data:
+          type: array
+          items:
+            type: string
+      description: List of resource ids user has access to
+      example:
+        data:
+        - data
+        - data
+        count: 0
     ResourceRef:
       type: object
       properties:
@@ -101,4 +116,5 @@ components:
           type: array
           items:
             type: string
+      description: List of ids to give user access to
 
