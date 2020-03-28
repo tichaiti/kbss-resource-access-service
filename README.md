@@ -7,6 +7,8 @@ is an example of building a swagger-enabled Flask server.
 
 This example uses the [Connexion](https://github.com/zalando/connexion) library on top of Flask.
 
+See [API-DOC](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/tichaiti/kbss-resource-access-service/generate-server/swagger_server/swagger/swagger.yaml) used for generation.
+
 ## To add additional apis:
 Update [swagger.yaml](swagger_server/swagger/swagger.yaml)
 
