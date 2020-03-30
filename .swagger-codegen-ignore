@@ -29,5 +29,9 @@ tox.ini
 .travis.yml
 Dockerfile
 swagger_server/test/**
-akse_controller.py
+swagger_server/__main__.py
+
+# Controllers
+swagger_server/controllers/authorization_controller.py
+swagger_server/controllers/access_controller.py
 

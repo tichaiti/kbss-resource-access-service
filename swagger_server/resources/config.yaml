@@ -1,0 +1,5 @@
+database:
+  type: sql
+  url: postgres://postgres:password@localhost:5432/postgres
+  pool_size: 20
+  migration_directory: migrations

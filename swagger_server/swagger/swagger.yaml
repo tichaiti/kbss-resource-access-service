@@ -5,18 +5,18 @@ info:
 servers:
 - url: /
 tags:
-- name: Akse
-  description: APIs pou tcheke resous ou gen akse ak yo
+- name: Access
+  description: APIs tou check the resources a user have access to
 paths:
-  /api/resource/access/{dataType}/{userId}:
+  /api/resource/access/{data_type}/{user_id}:
     get:
       tags:
-      - Akse
+      - Access
       summary: Gets resource user has access to
       description: Returns list of ids of DataType user has access to
       operationId: get_resource_access_for_user
       parameters:
-      - name: dataType
+      - name: data_type
         in: path
         description: The data type ex book.
         required: true
@@ -27,7 +27,7 @@ paths:
           enum:
           - book
           - room
-      - name: userId
+      - name: user_id
         in: path
         description: The user id
         required: true
@@ -48,15 +48,15 @@ paths:
           description: DataType does not exists
         "500":
           description: Something failed in the server
-      x-openapi-router-controller: swagger_server.controllers.akse_controller
+      x-openapi-router-controller: swagger_server.controllers.access_controller
     post:
       tags:
-      - Akse
+      - Access
       summary: Gives user access to a resource
       description: Adds a resource id to user access list
       operationId: add_resource_access_for_user
       parameters:
-      - name: dataType
+      - name: data_type
         in: path
         description: The data type ex book.
         required: true
@@ -67,7 +67,7 @@ paths:
           enum:
           - book
           - room
-      - name: userId
+      - name: user_id
         in: path
         description: The user id
         required: true
@@ -91,7 +91,7 @@ paths:
           description: DataType does not exists
         "500":
           description: Something failed in the server
-      x-openapi-router-controller: swagger_server.controllers.akse_controller
+      x-openapi-router-controller: swagger_server.controllers.access_controller
 components:
   schemas:
     ResourceAccess:
