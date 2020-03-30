@@ -1,5 +1,6 @@
 import connexion
 import six
+from connexion import NoContent
 from werkzeug.exceptions import BadRequest
 
 from swagger_server.database.ResourceAccess import ResourceRepository, ResourceAccessModel
@@ -29,6 +30,7 @@ def add_resource_access_for_user(body, data_type, user_id):  # noqa: E501
         for resource_id in resource_ref.ids:
             resource_access = ResourceAccessModel(user_id, resource_id, data_type)
             repo.save(resource_access)
+    return NoContent, 204
 
 
 def get_resource_access_for_user(data_type, user_id):  # noqa: E501
