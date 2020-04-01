@@ -11,7 +11,9 @@ def main():
     configure_database(app.app)
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('swagger.yaml', arguments={'title': 'resource-access-service'}, pythonic_params=True)
-    app.run(port=8080)
+    
+    port = int(os.environ.get("PORT", default=8080))
+    app.run(port=port)
 
 
 if __name__ == '__main__':
